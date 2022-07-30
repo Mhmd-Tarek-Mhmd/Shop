@@ -3,7 +3,6 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 // Initialize Firebase
-//const firebaseConfig = JSON.parse(process.env.FIREBASE_CONFIG);
 const app = initializeApp(JSON.parse(process.env.FIREBASE_CONFIG));
 const analytics = getAnalytics(app);
 
