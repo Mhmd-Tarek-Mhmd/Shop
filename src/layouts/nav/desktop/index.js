@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 
 import AccountMenu from "../accountMenu";
 import ThemeToggler from "../themeToggler";
@@ -14,7 +15,7 @@ function DesktopNav({ user }) {
       <WishList Element={ButtonLink} color="inherit" />
       <Cart Element={ButtonLink} color="inherit" />
 
-      <ThemeToggler Element={ButtonLink} color="inherit" />
+      <ThemeToggler Element={IconButton} color="inherit" />
 
       {user ? (
         <AccountMenu user={user} />
