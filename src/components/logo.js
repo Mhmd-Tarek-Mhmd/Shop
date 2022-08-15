@@ -8,11 +8,9 @@ function Logo() {
       component="a"
       href="/"
       sx={{
-        fontWeight: 700,
-        color: "inherit",
         fontSize: 26,
-        fontFamily: "monospace",
-        letterSpacing: ".1rem",
+        color: "inherit",
+        fontFamily: "Monoton",
         textDecoration: "none",
       }}
     >
