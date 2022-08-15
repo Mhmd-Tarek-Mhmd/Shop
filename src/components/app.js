@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import Nav from "../layouts/nav";
+import Footer from "../layouts/footer";
 
 function App() {
   const themeState = useSelector((state) => state.theme);
@@ -17,6 +18,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Nav />
+      <Footer />
     </ThemeProvider>
   );
 }
