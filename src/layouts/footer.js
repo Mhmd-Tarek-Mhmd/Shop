@@ -47,7 +47,7 @@ function SocialIcons() {
       <IconButton
         href="https://facebook.com"
         target="_blank"
-        role="menuitem"
+        role="listitem"
         aria-label="To Facebook page"
       >
         <FacebookIcon />
@@ -55,7 +55,7 @@ function SocialIcons() {
       <IconButton
         href="https://twitter.com"
         target="_blank"
-        role="menuitem"
+        role="listitem"
         aria-label="To Twitter page"
       >
         <TwitterIcon />
@@ -63,7 +63,7 @@ function SocialIcons() {
       <IconButton
         href="https://instagram.com"
         target="_blank"
-        role="menuitem"
+        role="listitem"
         aria-label="To Instagram page"
       >
         <InstagramIcon />

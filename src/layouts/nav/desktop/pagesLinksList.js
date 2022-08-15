@@ -15,7 +15,7 @@ function PagesLinksList() {
     >
       <PagesLinks
         Element={Link}
-        role="menuitem"
+        role="listitem"
         color="inherit"
         underline="hover"
         variant="button"
