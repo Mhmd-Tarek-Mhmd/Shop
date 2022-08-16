@@ -108,9 +108,9 @@ function MoreMenu() {
                     py: 0,
                   }}
                 >
-                  <ThemeToggler Element={MenuItem} />
-                  <WishList Element={MenuItem} component="a" />
-                  <Cart Element={MenuItem} component="a" />
+                  <ThemeToggler sx={{ py: 1.5 }} Element={MenuItem} />
+                  <WishList sx={{ py: 1.5 }} Element={MenuItem} component="a" />
+                  <Cart sx={{ py: 1.5 }} Element={MenuItem} component="a" />
                 </MenuList>
               </ClickAwayListener>
             </Paper>
