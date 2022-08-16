@@ -6,11 +6,25 @@ import Logo from "../../components/logo";
 import DesktopNav from "./desktop";
 import MobileNav from "./mobile";
 
+const homeStyle = {
+  top: 0,
+  left: 0,
+  zIndex: 1,
+  width: "100%",
+  boxShadow: "unset",
+  position: "absolute",
+  background: "transparent",
+};
+
 function Nav() {
   const user = {};
 
   return (
-    <AppBar position="static" component="nav">
+    <AppBar
+      position="static"
+      component="nav"
+      sx={location.pathname === "/" && homeStyle}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Logo />
