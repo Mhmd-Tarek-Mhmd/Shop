@@ -9,7 +9,7 @@ import MobileNav from "./mobile";
 const homeStyle = {
   top: 0,
   left: 0,
-  zIndex: 1,
+  zIndex: 99,
   width: "100%",
   boxShadow: "unset",
   position: "absolute",
