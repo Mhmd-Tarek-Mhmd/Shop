@@ -12,10 +12,9 @@ function DesktopNav({ user }) {
     <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
       <PagesLinksList />
 
+      <ThemeToggler Element={IconButton} color="inherit" />
       <WishList Element={ButtonLink} color="inherit" />
       <Cart Element={ButtonLink} color="inherit" />
-
-      <ThemeToggler Element={IconButton} color="inherit" />
 
       {user ? (
         <AccountMenu user={user} />
