@@ -6,10 +6,12 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
 function WishList({ Element, ...props }) {
+  const wishlist = useSelector((state) => state.wishlist);
+
   return (
     <Tooltip title="Open wishlist" arrow>
       <Element {...props} href="/wishlist">
-        <Badge badgeContent={1} color="secondary" variant="dot">
+        <Badge badgeContent={wishlist.length} color="secondary" variant="dot">
           <FavoriteBorderOutlinedIcon />
         </Badge>
       </Element>

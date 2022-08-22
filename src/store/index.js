@@ -7,8 +7,12 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredPaths: ["products", "cart"],
-        ignoredActions: ["products/getProducts/fulfilled", "cart/addCartItem"],
+        ignoredPaths: ["products", "cart", "wishlist"],
+        ignoredActions: [
+          "products/getProducts/fulfilled",
+          "wishlist/addWishlistItem",
+          "cart/addCartItem",
+        ],
       },
     }),
 });
