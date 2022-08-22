@@ -1,6 +1,11 @@
+import cartReducer from "./slices/cart";
 import themeReducer from "./slices/theme";
 import productsReducer from "./slices/products";
 
-const reducer = { theme: themeReducer, products: productsReducer };
+const reducer = {
+  cart: cartReducer,
+  theme: themeReducer,
+  products: productsReducer,
+};
 
 export default reducer;

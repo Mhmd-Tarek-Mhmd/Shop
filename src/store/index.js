@@ -7,10 +7,8 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // Ignore these action types
-        ignoredActions: ["products/getProducts/fulfilled"],
-        // Ignore these paths in the state
-        ignoredPaths: ["products"],
+        ignoredPaths: ["products", "cart"],
+        ignoredActions: ["products/getProducts/fulfilled", "cart/addCartItem"],
       },
     }),
 });

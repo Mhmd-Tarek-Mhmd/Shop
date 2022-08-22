@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import Badge from "@mui/material/Badge";
 import Tooltip from "@mui/material/Tooltip";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -16,10 +18,12 @@ function WishList({ Element, ...props }) {
 }
 
 function Cart({ Element, ...props }) {
+  const cart = useSelector((state) => state.cart);
+
   return (
     <Tooltip title="Open cart" arrow>
       <Element {...props} href="/cart">
-        <Badge badgeContent={4} color="secondary">
+        <Badge badgeContent={cart.length} color="secondary">
           <ShoppingCartOutlinedIcon />
         </Badge>
       </Element>
