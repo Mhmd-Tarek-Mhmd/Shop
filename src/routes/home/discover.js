@@ -17,17 +17,27 @@ const a11yPanelProps = (index) => ({
   id: `tabpanel-${index}`,
   "aria-labelledby": `tab-${index}`,
 });
+const getAllFilters = (products, type) => {
+  const allFilters = {
+    "best seller": products.filter((product, i) => i < 13),
+    new: products.filter((product, i) => i > 8),
+    sale: products.filter((product) => product.sale),
+  };
+
+  if (type === "keys") {
+    return Object.keys(allFilters);
+  }
+  if (type === "values") {
+    return Object.values(allFilters);
+  }
+  return false;
+};
 
 function Discover() {
   const [value, setValue] = useState(0);
   const products = useSelector((state) => state.products);
 
   const handleChange = (e, newValue) => setValue(newValue);
-  const allFilters = {
-    "best seller": products.filter((product, i) => i < 13),
-    new: products.filter((product, i) => i > 8),
-    sale: products.filter((product) => product.sale),
-  };
 
   return (
     <Section title="Discover" aria-label="Discover Products">
@@ -46,20 +56,21 @@ function Discover() {
         <Tab label="Sale" {...a11yTabProps} />
       </Tabs>
 
-      {Object.keys(allFilters).map((filterKey, i) => (
-        <TabPanel
-          key={filterKey}
-          {...a11yPanelProps(i)}
-          value={value}
-          index={i}
-        >
-          {Object.values(allFilters)[i].map((product) => (
-            <Grid item key={product.id}>
-              <ProductCard product={product} badgeType={filterKey} />
-            </Grid>
-          ))}
-        </TabPanel>
-      ))}
+      {products &&
+        getAllFilters(products, "keys").map((filterKey, i) => (
+          <TabPanel
+            key={filterKey}
+            {...a11yPanelProps(i)}
+            value={value}
+            index={i}
+          >
+            {getAllFilters(products, "values")[i].map((product) => (
+              <Grid item key={product.id}>
+                <ProductCard product={product} badgeType={filterKey} />
+              </Grid>
+            ))}
+          </TabPanel>
+        ))}
     </Section>
   );
 }
