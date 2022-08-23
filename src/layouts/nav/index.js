@@ -18,12 +18,13 @@ const homeStyle = {
 
 function Nav() {
   const user = {};
+  const { pathname } = location;
 
   return (
     <AppBar
       position="static"
       component="nav"
-      sx={location.pathname === "/" && homeStyle}
+      sx={pathname === "/" && homeStyle}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>

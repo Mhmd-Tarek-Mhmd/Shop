@@ -1,4 +1,4 @@
-const pages = [];
+const pages = ["home"];
 
 const PagesLinks = ({ Element, ...props }) => {
   return pages.map((page) => (
