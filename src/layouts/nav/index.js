@@ -1,3 +1,5 @@
+import { useForceUpdate } from "../../hooks";
+
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
@@ -19,12 +21,14 @@ const homeStyle = {
 function Nav() {
   const user = {};
   const { pathname } = location;
+  const forceUpdate = useForceUpdate();
 
   return (
     <AppBar
       position="static"
       component="nav"
-      sx={pathname === "/" && homeStyle}
+      onClickCapture={forceUpdate}
+      sx={pathname === "/" ? homeStyle : {}}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
