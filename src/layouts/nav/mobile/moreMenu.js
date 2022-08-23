@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import { useState, useRef, useEffect } from "preact/hooks";
 
 import Grow from "@mui/material/Grow";
+import Badge from "@mui/material/Badge";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import Tooltip from "@mui/material/Tooltip";
@@ -16,6 +18,8 @@ import { WishList, Cart } from "../ShoppingLinks";
 function MoreMenu() {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+  const cart = useSelector((state) => state.cart);
+  const wishlist = useSelector((state) => state.wishlist);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -76,7 +80,13 @@ function MoreMenu() {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          <MoreVert />
+          <Badge
+            badgeContent={cart.length || wishlist.length}
+            color="secondary"
+            variant="dot"
+          >
+            <MoreVert />
+          </Badge>
         </IconButton>
       </Tooltip>
 
