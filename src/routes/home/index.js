@@ -1,4 +1,4 @@
-import { useEffect } from "preact/hooks";
+import { useDocumentTitle } from "../../hooks";
 
 import Hero from "./hero";
 import Discover from "./discover";
@@ -8,9 +8,7 @@ import Newsletter from "./newsletter.js";
 import "@splidejs/react-splide/dist/css/splide-core.min.css";
 
 function Home() {
-  useEffect(() => {
-    document.title = "Home - Shop";
-  }, []);
+  useDocumentTitle("Home - Shop");
 
   return (
     <>
