@@ -1,3 +1,5 @@
+import { useThemeColors } from "../hooks";
+
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
@@ -10,15 +12,14 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import Logo from "../components/logo";
 
 function Footer() {
+  const grey = useThemeColors("grey", 200, 800);
+
   return (
     <Box
       component="footer"
       sx={{
         py: 2,
-        backgroundColor: (theme) =>
-          theme.palette.mode === "light"
-            ? theme.palette.grey[200]
-            : theme.palette.grey[800],
+        backgroundColor: grey,
       }}
     >
       <Container maxWidth="xl">

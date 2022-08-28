@@ -1,4 +1,4 @@
-import { useUniqueID } from "../../hooks";
+import { useThemeColors, useUniqueID } from "../../hooks";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -15,6 +15,8 @@ const getColor = (theme, color) =>
     : theme.palette[color].dark;
 
 function Features() {
+  const secondary = useThemeColors("secondary");
+
   return (
     <Box
       aria-label="Features"
@@ -25,7 +27,7 @@ function Features() {
         textAlign: "center",
         alignItems: "center",
         display: { md: "flex" },
-        bgcolor: (theme) => getColor(theme, "secondary"),
+        bgcolor: secondary,
       }}
     >
       <FeatureContainer>
@@ -98,56 +100,54 @@ const options = {
   arrows: false,
   drag: true,
 };
-const paginationStyles = {
-  ".splide__pagination": {
-    p: 0,
-    m: 0,
-    top: "20px",
-    position: "relative",
-  },
-  ".splide__pagination__page": {
-    padding: 0,
-    opacity: 0.7,
-    width: "8px",
-    height: "8px",
-    margin: "3px",
-    border: "none",
-    cursor: "pointer",
-    background: "#ccc",
-    borderRadius: "50%",
-    position: "relative",
-    display: "inline-block",
-    transition: "transform .2s linear",
-    color: (theme) => getColor(theme, "primary"),
-    "&:hover": {
-      opacity: 0.9,
-    },
-    "&:focus-visible": {
-      outlineOffset: "3px",
-      outline: "3px solid currentcolor",
-    },
-  },
-  ".splide__pagination__page.is-active": {
-    zIndex: 1,
-    transform: "scale(1.4)",
-    background: "currentcolor",
-  },
-};
+
 function FeatureContainer(props) {
+  const primary = useThemeColors("primary");
   const theme = useTheme();
   const isMidBreakpoint = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <Box
-      sx={Object.assign(
-        {
+      sx={{
+        position: "relative",
+        display: { md: "grid" },
+        top: { xs: "44px", md: 0 },
+        gridTemplateColumns: "repeat(3, 1fr)",
+        ".splide__pagination": {
+          p: 0,
+          m: 0,
+          top: "20px",
           position: "relative",
-          display: { md: "grid" },
-          top: { xs: "44px", md: 0 },
-          gridTemplateColumns: "repeat(3, 1fr)",
         },
-        paginationStyles
-      )}
+        ".splide__pagination__page": {
+          padding: 0,
+          opacity: 0.7,
+          width: "8px",
+          height: "8px",
+          margin: "3px",
+          border: "none",
+          color: primary,
+          cursor: "pointer",
+          background: "#ccc",
+          borderRadius: "50%",
+          position: "relative",
+          display: "inline-block",
+          transition: "transform .2s linear",
+          willChange: "opacity, outline, outlineOffset",
+          "&:hover": {
+            opacity: 0.9,
+          },
+          "&:focus-visible": {
+            outlineOffset: "3px",
+            outline: "3px solid currentcolor",
+          },
+        },
+        ".splide__pagination__page.is-active": {
+          zIndex: 1,
+          transform: "scale(1.4)",
+          background: "currentcolor",
+        },
+      }}
     >
       {isMidBreakpoint ? (
         props.children(isMidBreakpoint)
