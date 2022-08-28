@@ -1,6 +1,4 @@
-import { useThemeColors, useUniqueID } from "../../hooks";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { useThemeColors, useUniqueID, useThemeBreakpoints } from "../../hooks";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,11 +6,6 @@ import PublicIcon from "@mui/icons-material/Public";
 import HeadphonesIcon from "@mui/icons-material/Headphones";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-
-const getColor = (theme, color) =>
-  theme.palette.mode === "light"
-    ? theme.palette[color].main
-    : theme.palette[color].dark;
 
 function Features() {
   const secondary = useThemeColors("secondary");
@@ -103,8 +96,7 @@ const options = {
 
 function FeatureContainer(props) {
   const primary = useThemeColors("primary");
-  const theme = useTheme();
-  const isMidBreakpoint = useMediaQuery(theme.breakpoints.up("md"));
+  const isMidBreakpoint = useThemeBreakpoints("md");
 
   return (
     <Box

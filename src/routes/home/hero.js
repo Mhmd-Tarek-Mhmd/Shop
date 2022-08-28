@@ -1,5 +1,4 @@
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { useThemeBreakpoints } from "../../hooks";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,8 +7,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import ButtonLink from "../../components/buttonLink";
 
 function Hero() {
-  const theme = useTheme();
-  const isMidBreakpoint = useMediaQuery(theme.breakpoints.up("md"));
+  const isMidBreakpoint = useThemeBreakpoints("md");
 
   const getPath = (n) =>
     `../../assets/images/hero/${
