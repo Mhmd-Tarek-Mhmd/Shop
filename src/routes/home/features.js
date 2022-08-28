@@ -1,3 +1,4 @@
+import { useUniqueID } from "../../hooks";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -60,7 +61,7 @@ export default Features;
 // Feature
 
 function Feature({ Icon, title, subtitle, isMidBreakpoint }) {
-  const id = `feature-${Math.random() * Math.random()}`;
+  const id = `feature-${useUniqueID()}`;
 
   return isMidBreakpoint ? (
     <Box component="article" aria-labelledby={id}>
