@@ -24,16 +24,13 @@ const getAllFilters = (products = [], type) => {
 function Discover() {
   const products = useSelector((state) => state.products);
 
-  const filterKeys = getAllFilters(products, "keys");
-  const filterValues = getAllFilters(products, "values");
-
   return (
     <Section title="Discover" aria-label="Discover Products">
       {products && (
         <Tabs
-          tabLabels={filterKeys}
-          tabPanels={filterKeys.map((filterKey, i) =>
-            filterValues[i].map((product) => (
+          tabLabels={getAllFilters(products, "keys")}
+          tabPanels={getAllFilters(products, "keys").map((filterKey, i) =>
+            getAllFilters(products, "values")[i].map((product) => (
               <Grid item key={product.id}>
                 <ProductCard product={product} badgeType={filterKey} />
               </Grid>

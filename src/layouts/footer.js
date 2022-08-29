@@ -12,7 +12,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import Logo from "../components/logo";
 
 function Footer() {
-  const grey = useThemeColors("grey", 200, 800);
+  const grey = useThemeColors("grey", "hex", 200, 800);
 
   return (
     <Box
