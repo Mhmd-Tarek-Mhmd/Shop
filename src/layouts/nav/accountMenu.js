@@ -10,14 +10,13 @@ import Tooltip from "@mui/material/Tooltip";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 
-import ButtonLink from "../../components/buttonLink";
-
 function AccountMenu({ user }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (e) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
+  const handleLogout = () => console.log("logging out...");
 
   return (
     <>
@@ -72,20 +71,20 @@ function AccountMenu({ user }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem>
+        <MenuItem component="a" href="/profile">
           <ListItemIcon>
             <Avatar fontSize="small" />
           </ListItemIcon>
           Profile
         </MenuItem>
         <Divider />
-        <MenuItem component="a" href="products">
+        <MenuItem component="a" href="/settings">
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem href="/login" component={ButtonLink}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

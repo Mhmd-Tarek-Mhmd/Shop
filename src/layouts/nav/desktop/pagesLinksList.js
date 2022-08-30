@@ -1,6 +1,6 @@
+import Link from "@mui/material/Link";
 import Toolbar from "@mui/material/Toolbar";
 
-import Link from "../../../components/link";
 import PagesLinks from "../pagesLinks";
 
 function PagesLinksList() {

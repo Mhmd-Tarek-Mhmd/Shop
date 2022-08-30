@@ -1,11 +1,11 @@
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 
 import AccountMenu from "../accountMenu";
 import ThemeToggler from "../themeToggler";
 import PagesLinksList from "./pagesLinksList";
 import { WishList, Cart } from "../ShoppingLinks";
-import ButtonLink from "../../../components/buttonLink";
 
 function DesktopNav({ user }) {
   return (
@@ -13,20 +13,15 @@ function DesktopNav({ user }) {
       <PagesLinksList />
 
       <ThemeToggler Element={IconButton} color="inherit" />
-      <WishList Element={ButtonLink} color="inherit" />
-      <Cart Element={ButtonLink} color="inherit" />
+      <WishList Element={IconButton} color="inherit" />
+      <Cart Element={IconButton} color="inherit" />
 
       {user ? (
         <AccountMenu user={user} />
       ) : (
-        <ButtonLink
-          variant="outlined"
-          color="inherit"
-          href="/login"
-          sx={{ ml: 2 }}
-        >
+        <Button variant="outlined" color="inherit" href="/login" sx={{ ml: 2 }}>
           Login
-        </ButtonLink>
+        </Button>
       )}
     </Box>
   );
