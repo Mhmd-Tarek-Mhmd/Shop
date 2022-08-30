@@ -44,8 +44,8 @@ function Counter({ id, isDisabled, increaseCb, decreaseCb, changeCb }) {
     <Box
       sx={{
         display: "grid",
-        gridTemplateRows: "36.5px",
-        gridTemplateColumns: "50px 70px 50px",
+        gridTemplateRows: { xs: 30, sm: "36.5px" },
+        gridTemplateColumns: { xs: "35px 40px 35px", sm: "50px 70px 50px" },
       }}
     >
       <Button
