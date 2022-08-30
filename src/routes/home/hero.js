@@ -1,29 +1,21 @@
-import { useThemeBreakpoints } from "../../hooks";
-
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
-import ButtonLink from "../../components/buttonLink";
+const getPath = (n) => `../../assets/images/hero/${n}.jpg`;
+const options = {
+  type: "loop",
+  autoplay: true,
+  cover: true,
+  drag: false,
+  arrows: false,
+  pagination: false,
+  height: "100vh",
+  fixedHeight: "100vh",
+};
 
 function Hero() {
-  const isMidBreakpoint = useThemeBreakpoints("md");
-
-  const getPath = (n) =>
-    `../../assets/images/hero/${
-      isMidBreakpoint ? "desktop" : "mobile"
-    }/${n}.jpg`;
-  const options = {
-    type: "loop",
-    autoplay: true,
-    cover: true,
-    drag: false,
-    arrows: false,
-    pagination: false,
-    height: "500px",
-    fixedHeight: "100vh",
-  };
-
   return (
     <Box
       component="header"
@@ -36,6 +28,7 @@ function Hero() {
           position: "absolute",
           bgcolor: "rgba(0, 0, 0, 0.5)",
         },
+        ".splide__slide": { minHeight: 500 },
       }}
     >
       <Splide options={options} aria-hidden="true">
@@ -79,9 +72,9 @@ function Hero() {
           <br />
           in your pocket
         </Typography>
-        <ButtonLink href="./products" variant="contained" color="secondary">
+        <Button href="/products" variant="contained" color="secondary">
           Explore
-        </ButtonLink>
+        </Button>
       </Box>
     </Box>
   );
