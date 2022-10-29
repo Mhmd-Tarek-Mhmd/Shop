@@ -10,7 +10,7 @@ import { ResetWishlist } from "../../components/wishlistActions";
 
 function ItemList({ wishlist }) {
   return (
-    <Card sx={{ pb: 1 }}>
+    <Card sx={{ pb: 1, maxWidth: 700, mx: "auto" }}>
       <CardContent component="ul" sx={{ listStyle: "none", m: 0 }}>
         {wishlist.map((item, i) => (
           <Fragment key={item.id}>

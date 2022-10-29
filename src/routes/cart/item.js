@@ -10,7 +10,11 @@ function Item({ item }) {
       <Toolbar
         disableGutters
         component="article"
-        sx={{ py: 1, justifyContent: "space-between", overflowX: "auto" }}
+        sx={{
+          py: 1,
+          justifyContent: "space-between",
+          overflowX: "auto",
+        }}
       >
         <Toolbar disableGutters>
           <ImageWithFallback
@@ -24,8 +28,8 @@ function Item({ item }) {
             sx={{
               ml: 2,
               fontSize: "1rem",
-              maxWidth: { xs: 100, sm: 150, md: 250 },
-              minWidth: { xs: 100, sm: 150, md: 250 },
+              maxWidth: { xs: 100, sm: 150 },
+              minWidth: { xs: 100, sm: 150 },
               maxHeight: 48,
               overflow: "hidden",
               textOverflow: "ellipsis",
@@ -38,7 +42,7 @@ function Item({ item }) {
           </Typography>
         </Toolbar>
 
-        <Typography sx={{ mx: 2 }}>{item.total}$</Typography>
+        <Typography sx={{ mx: 2 }}>{item.total.toFixed(2)}$</Typography>
 
         <Toolbar disableGutters>
           <QuantityCounter id={item.id} />

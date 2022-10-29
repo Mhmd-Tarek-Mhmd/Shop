@@ -13,7 +13,7 @@ import { ResetCart } from "../../components/cartActions";
 
 function ItemList({ cart }) {
   return (
-    <Card sx={{ pb: 1 }}>
+    <Card sx={{ pb: 1, maxWidth: 700, mx: "auto" }}>
       <CardContent component="ul" sx={{ listStyle: "none", m: 0 }}>
         {cart.map((item) => (
           <Fragment key={item.id}>
