@@ -1,12 +1,14 @@
 import { useMemo, useEffect } from "preact/compat";
 import { useDispatch, useSelector } from "react-redux";
-
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import { getProducts } from "../store/actions";
 
 import Nav from "../layouts/nav";
+import Main from "../layouts/main";
 import Footer from "../layouts/footer";
 
 function App() {
@@ -22,8 +24,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Nav />
-      <Footer />
+      <Box sx={{ height: "100vh" }}>
+        <Nav />
+        <Main />
+        <Footer />
+      </Box>
     </ThemeProvider>
   );
 }
