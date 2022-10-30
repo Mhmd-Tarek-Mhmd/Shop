@@ -11,6 +11,7 @@ import CardActions from "@mui/material/CardActions";
 
 import { AddCart } from "./cartActions";
 import { AddWishlist } from "./wishlistActions";
+import fallback from "../assets/images/no-preview.png";
 
 const getPriceAfterSale = (price, sale) => {
   const saleCost = (sale * price) / 100;
@@ -36,6 +37,7 @@ function ProductCard({ product, badgeType }) {
         alt={product.title}
         height="100"
         image={product.images[0]}
+        onError={(e) => (e.target.src = fallback)}
         sx={{ mx: "auto", pt: "15px", width: "auto", maxWidth: "100%" }}
       />
 
