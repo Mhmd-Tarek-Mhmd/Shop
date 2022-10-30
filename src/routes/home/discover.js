@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 
 import Grid from "@mui/material/Grid";
+import Alert from "@mui/material/Alert";
 
 import Tabs from "../../components/tabs";
 import Section from "../../components/section";
@@ -26,7 +27,7 @@ function Discover() {
 
   return (
     <Section title="Discover" aria-label="Discover Products">
-      {products && (
+      {products && products.length ? (
         <Tabs
           tabLabels={getAllFilters(products, "keys")}
           tabPanels={getAllFilters(products, "keys").map((filterKey, i) =>
@@ -46,6 +47,13 @@ function Discover() {
           }}
           panelProps={{ grid: true }}
         />
+      ) : (
+        <Alert
+          severity="error"
+          sx={{ mx: "auto", width: "50%", minWidth: 200 }}
+        >
+          Bad or no internet connection.
+        </Alert>
       )}
     </Section>
   );
