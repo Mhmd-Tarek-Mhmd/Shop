@@ -9,7 +9,7 @@ import Section from "../../components/section";
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
-  useDocumentTitle("Cart - Shop");
+  useDocumentTitle("Cart");
 
   return (
     <Section title="My cart">

@@ -1,9 +1,9 @@
-import { useEffect } from "preact/hooks";
+import { useLayoutEffect } from "preact/hooks";
 
-function useDocumentTitle(title) {
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
+function useDocumentTitle(pageTitle) {
+  useLayoutEffect(() => {
+    document.title = `${pageTitle} - Shop`;
+  }, [pageTitle]);
 }
 
 export default useDocumentTitle;

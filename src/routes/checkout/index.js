@@ -31,7 +31,7 @@ function getStepContent(step) {
 }
 
 function Checkout() {
-  useDocumentTitle("Checkout - Shop");
+  useDocumentTitle("Checkout");
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {

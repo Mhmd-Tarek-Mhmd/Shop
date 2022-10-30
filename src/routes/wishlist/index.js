@@ -9,7 +9,7 @@ import Section from "../../components/section";
 
 function Wishlist() {
   const wishlist = useSelector((state) => state.wishlist);
-  useDocumentTitle("Wishlist - Shop");
+  useDocumentTitle("Wishlist");
 
   return (
     <Section title="My wishlist">

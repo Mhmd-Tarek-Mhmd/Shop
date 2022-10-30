@@ -8,7 +8,7 @@ import Newsletter from "./newsletter.js";
 import "@splidejs/react-splide/dist/css/splide-core.min.css";
 
 function Home() {
-  useDocumentTitle("Home - Shop");
+  useDocumentTitle("Home");
 
   return (
     <>

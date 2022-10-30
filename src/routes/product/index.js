@@ -17,7 +17,7 @@ const getProduct = (products) => {
 function Product() {
   const products = useSelector((state) => state.products);
   const product = getProduct(products);
-  useDocumentTitle(`${product?.title} - Shop`);
+  useDocumentTitle(`${product?.title}`);
 
   return (
     product && (
