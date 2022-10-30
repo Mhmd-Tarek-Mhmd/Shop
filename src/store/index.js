@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import reducer from "./reducers";
+import middleware from "./middleware";
 
 const store = configureStore({
   reducer,
@@ -14,7 +15,7 @@ const store = configureStore({
           "cart/addCartItem",
         ],
       },
-    }),
+    }).prepend(middleware),
 });
 
 export default store;

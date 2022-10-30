@@ -1,6 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  createListenerMiddleware,
+  createSlice,
+  isAnyOf,
+} from "@reduxjs/toolkit";
 
-const initialState = [];
+const initialState = sessionStorage.cart ? JSON.parse(sessionStorage.cart) : [];
 
 const getTotal = (price, sale, quantity) => {
   const saleCost = (sale * price) / 100;
@@ -24,7 +28,7 @@ const cartSlice = createSlice({
     ],
     removeCartItem: (state, action) =>
       state.filter((a) => a.id !== action.payload),
-    resetCart: () => initialState,
+    resetCart: () => [],
     setQuantity: (state, { payload: { id, quantity } }) =>
       state.map((item) =>
         item.id !== id
@@ -64,3 +68,21 @@ export const {
   increaseQuantity,
   decreaseQuantity,
 } = cartSlice.actions;
+
+export const cartMiddleware = createListenerMiddleware();
+cartMiddleware.startListening({
+  matcher: isAnyOf(
+    addCartItem,
+    removeCartItem,
+    setQuantity,
+    increaseQuantity,
+    decreaseQuantity
+  ),
+  effect: (action, listener) => {
+    sessionStorage.setItem("cart", JSON.stringify(listener.getState().cart));
+  },
+});
+cartMiddleware.startListening({
+  actionCreator: resetCart,
+  effect: () => sessionStorage.removeItem("cart"),
+});
