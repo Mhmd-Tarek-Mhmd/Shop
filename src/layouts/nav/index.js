@@ -1,4 +1,5 @@
 import Router from "preact-router";
+import { useSelector } from "react-redux";
 
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -43,7 +44,7 @@ const DefaultNav = () => (
 );
 
 const NavContent = () => {
-  const user = {};
+  const user = useSelector((state) => state.authedUser);
 
   return (
     <Container maxWidth="xl">

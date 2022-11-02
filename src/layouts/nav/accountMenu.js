@@ -34,8 +34,8 @@ function AccountMenu({ user }) {
           aria-expanded={open ? "true" : undefined}
         >
           <Avatar
-            alt={user.name}
-            src={user.img}
+            src={user.photoURL}
+            alt={user.displayName}
             sx={{ width: 32, height: 32 }}
           />
         </IconButton>
