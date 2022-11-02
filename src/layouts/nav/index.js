@@ -13,6 +13,7 @@ function Nav() {
   return (
     <Router>
       <HomeNav path="/" />
+      <AuthNav path="/auth/:rest*" />
       <DefaultNav default />
     </Router>
   );
@@ -35,6 +36,13 @@ const HomeNav = () => (
     }}
   >
     <NavContent />
+  </AppBar>
+);
+const AuthNav = () => (
+  <AppBar position="static" component="nav">
+    <Container maxWidth="xl" sx={{ py: 1 }}>
+      <Logo />
+    </Container>
   </AppBar>
 );
 const DefaultNav = () => (
