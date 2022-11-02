@@ -1,5 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import {
   getFirestore,
   enableIndexedDbPersistence,
@@ -7,15 +5,11 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-// Initialize Firebase
-const app = initializeApp(JSON.parse(process.env.FIREBASE_CONFIG));
-const analytics = getAnalytics(app);
+import app from "./app";
 
-// Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 enableIndexedDbPersistence(db);
 
-// Get a reference to the products collection
 const productsCollection = collection(db, "products");
 
 // Get all products data
