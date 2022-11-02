@@ -13,6 +13,7 @@ import {
   removeWishlistItem,
   resetWishlist,
 } from "./slices/wishlist";
+import { add, clear } from "./slices/authedUser";
 
 export {
   toggleTheme,
@@ -26,4 +27,6 @@ export {
   addWishlistItem,
   removeWishlistItem,
   resetWishlist,
+  add,
+  clear,
 };
