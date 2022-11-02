@@ -8,11 +8,12 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredPaths: ["products", "cart", "wishlist"],
+        ignoredPaths: ["products", "cart", "wishlist", "authedUser"],
         ignoredActions: [
           "products/getProducts/fulfilled",
           "wishlist/addWishlistItem",
           "cart/addCartItem",
+          "authedUser/add",
         ],
       },
     }).prepend(middleware),
