@@ -1,4 +1,8 @@
 import { useState } from "preact/hooks";
+import { useDispatch } from "react-redux";
+
+import { logout } from "../../firebase";
+import { clear } from "../../store/actions";
 
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -11,12 +15,13 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 
 function AccountMenu({ user }) {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (e) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
-  const handleLogout = () => console.log("logging out...");
+  const handleLogout = () => logout().then(() => dispatch(clear()));
 
   return (
     <>
