@@ -6,6 +6,7 @@ import Products from "./products";
 import Checkout from "./checkout";
 import Cart from "./cart";
 import WishList from "./wishList";
+import Auth from "./auth";
 
 function Routes() {
   return (
@@ -16,6 +17,7 @@ function Routes() {
       <Checkout path="/checkout" />
       <WishList path="/wishlist" />
       <Product path="/product/:id" />
+      <Auth path="/auth/:rest*" />
     </Router>
   );
 }
