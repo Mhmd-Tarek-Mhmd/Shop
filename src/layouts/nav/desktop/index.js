@@ -19,8 +19,13 @@ function DesktopNav({ user }) {
       {user ? (
         <AccountMenu user={user} />
       ) : (
-        <Button variant="outlined" color="inherit" href="/login" sx={{ ml: 2 }}>
-          Login
+        <Button
+          variant="outlined"
+          color="inherit"
+          href="/auth/sign-up"
+          sx={{ ml: 2 }}
+        >
+          Sign up
         </Button>
       )}
     </Box>

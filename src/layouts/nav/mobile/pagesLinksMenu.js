@@ -55,8 +55,8 @@ function PagesLinksMenu({ user }) {
         {!user && (
           <>
             <Divider sx={{ my: "0 !important" }} />
-            <MenuItem href="/login" component="a">
-              Login
+            <MenuItem href="/auth/sign-up" component="a">
+              Sign up
             </MenuItem>
           </>
         )}
