@@ -6,6 +6,7 @@ import Products from "./products";
 import Checkout from "./checkout";
 import Cart from "./cart";
 import WishList from "./wishList";
+import Profile from "./profile";
 import Auth from "./auth";
 
 function Routes() {
@@ -13,6 +14,7 @@ function Routes() {
     <Router>
       <Home path="/" />
       <Cart path="/cart" />
+      <Profile path="/me" />
       <Products path="/products" />
       <Checkout path="/checkout" />
       <WishList path="/wishlist" />

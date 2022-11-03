@@ -78,7 +78,7 @@ function AccountMenu({ user }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem component="a" href="/profile">
+        <MenuItem component="a" href="/me">
           <ListItemIcon>
             <Avatar fontSize="small" />
           </ListItemIcon>
