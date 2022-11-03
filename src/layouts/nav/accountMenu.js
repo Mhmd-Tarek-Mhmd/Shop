@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import { useDispatch } from "react-redux";
 
 import { logout } from "../../firebase";
@@ -22,6 +22,8 @@ function AccountMenu({ user }) {
   const handleClick = (e) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
   const handleLogout = () => logout().then(() => dispatch(clear()));
+
+  useEffect(() => {if (open) document.body.style.paddingRight = 0}, [open]);
 
   return (
     <>

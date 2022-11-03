@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 
 import Fade from "@mui/material/Fade";
 import Menu from "@mui/material/Menu";
@@ -16,6 +16,8 @@ function PagesLinksMenu({ user }) {
 
   const handleClick = (e) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
+
+  useEffect(() => {if (isOpen) document.body.style.paddingRight = 0}, [isOpen]);
 
   return (
     <>
