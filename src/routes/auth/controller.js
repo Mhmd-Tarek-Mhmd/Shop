@@ -8,6 +8,7 @@ import { signUp, signIn, validateEmail, forgetPassword } from "../../firebase";
 
 import Template from "./template";
 
+const fallbackMsg = "Something went wrong. Try again";
 const noConnectionMsg = (errorCode) => {
   if (errorCode === "auth/network-request-failed") {
     return "Check your internet connection";
@@ -25,10 +26,16 @@ function Controller({ prefix, getErrorMsg, Form }) {
   const [isOpenBackdrop, setIsOpenBackdrop] = useState(false);
 
   const getGoogleErrorMsg = ({ code }) => {
+    let msg;
+
     if (code === "auth/internal-error") {
-      setMsg("Check your internet connection");
-      setIsOpenError(true);
+      msg = "Check your internet connection";
+    } else {
+      msg = fallbackMsg;
     }
+
+    setMsg(msg);
+    setIsOpenError(true);
   };
 
   const successCB = ({ user }) => {
@@ -52,7 +59,7 @@ function Controller({ prefix, getErrorMsg, Form }) {
 
   const errorCB = ({ code }) => {
     console.log(code);
-    const msg = getErrorMsg(code) || noConnectionMsg(code);
+    const msg = getErrorMsg(code) || noConnectionMsg(code) || fallbackMsg;
 
     setMsg(msg);
     setIsOpenError(true);
