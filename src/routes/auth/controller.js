@@ -4,7 +4,13 @@ import { useDispatch } from "react-redux";
 
 import { add } from "../../store/actions";
 import { useDocumentTitle } from "../../hooks";
-import { signUp, signIn, validateEmail, forgetPassword } from "../../firebase";
+import {
+  signUp,
+  signIn,
+  validateEmail,
+  updateUser,
+  forgetPassword,
+} from "../../firebase";
 
 import Template from "./template";
 
@@ -13,6 +19,11 @@ const noConnectionMsg = (errorCode) => {
   if (errorCode === "auth/network-request-failed") {
     return "Check your internet connection";
   }
+};
+const setUsername = (user) => {
+  const firstName = user.get("firstName");
+  const lastName = user.get("lastName");
+  updateUser({ displayName: `${firstName} ${lastName}` });
 };
 
 function Controller({ prefix, getErrorMsg, Form }) {
@@ -74,6 +85,7 @@ function Controller({ prefix, getErrorMsg, Form }) {
     const data = new FormData(e.currentTarget);
     sign(data.get("email"), data.get("password"))
       .then(successCB)
+      .then(() => setUsername(data))
       .catch(errorCB);
   };
 
