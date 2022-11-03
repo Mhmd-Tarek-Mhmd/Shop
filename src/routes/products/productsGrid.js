@@ -3,7 +3,7 @@ import Alert from "@mui/material/Alert";
 import Container from "@mui/material/Container";
 
 import ProductCard from "../../components/productCard";
-import SectionTitle from "../../components/SectionTitle";
+import SectionTitle from "../../components/sectionTitle";
 
 function ProductsGrid({ products, isFilter }) {
   return (

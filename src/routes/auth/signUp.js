@@ -3,7 +3,7 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
-import Input from "./Input";
+import Input from "./input";
 import Controller from "./controller";
 
 function SignUp() {
