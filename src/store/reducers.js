@@ -4,7 +4,7 @@ import themeReducer from "./slices/theme";
 import backdropReducer from "./slices/backdrop";
 import wishlistReducer from "./slices/wishlist";
 import productsReducer from "./slices/products";
-import authedUserSlice from "./Reducer/authedUser";
+import authedUserReducer from "./slices/authedUser";
 
 const reducer = {
   cart: cartReducer,
@@ -13,7 +13,7 @@ const reducer = {
   backdrop: backdropReducer,
   wishlist: wishlistReducer,
   products: productsReducer,
-  authedUser: authedUserSlice,
+  authedUser: authedUserReducer,
 };
 
 export default reducer;
