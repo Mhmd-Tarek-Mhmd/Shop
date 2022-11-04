@@ -1,5 +1,7 @@
 import { toggleTheme } from "./slices/theme";
 import { getProducts } from "./slices/products";
+import { openAlert, closeAlert } from "./slices/alert";
+import { openBackdrop, closeBackdrop } from "./slices/backdrop";
 import {
   addCartItem,
   removeCartItem,
@@ -16,8 +18,12 @@ import {
 import { add, clear } from "./slices/authedUser";
 
 export {
+  openAlert,
+  closeAlert,
   toggleTheme,
   getProducts,
+  openBackdrop,
+  closeBackdrop,
   addCartItem,
   removeCartItem,
   resetCart,
