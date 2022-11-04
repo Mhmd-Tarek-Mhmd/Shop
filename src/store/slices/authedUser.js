@@ -1,4 +1,4 @@
-import { createSlice, createListenerMiddleware } from "@reduxjs/toolkit";
+import { createSlice, createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
 
 const initialState = sessionStorage.authedUser
   ? JSON.parse(sessionStorage.authedUser)
@@ -16,16 +16,17 @@ const authedUserSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => userFormat(action.payload),
+    update: (state, action) => Object.assign(state, action.payload),
     clear: () => null,
   },
 });
 
 export default authedUserSlice.reducer;
-export const { add, clear } = authedUserSlice.actions;
+export const { add, update, clear } = authedUserSlice.actions;
 
 export const authedUserMiddleware = createListenerMiddleware();
 authedUserMiddleware.startListening({
-  actionCreator: add,
+  matcher: isAnyOf(add, update),
   effect: (action, listener) => {
     sessionStorage.setItem(
       "authedUser",

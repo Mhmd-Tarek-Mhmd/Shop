@@ -1,6 +1,7 @@
 import { toggleTheme } from "./slices/theme";
 import { getProducts } from "./slices/products";
 import { openAlert, closeAlert } from "./slices/alert";
+import { add, clear, update } from "./slices/authedUser";
 import { openBackdrop, closeBackdrop } from "./slices/backdrop";
 import {
   addCartItem,
@@ -15,9 +16,11 @@ import {
   removeWishlistItem,
   resetWishlist,
 } from "./slices/wishlist";
-import { add, clear } from "./slices/authedUser";
 
 export {
+  add,
+  clear,
+  update,
   openAlert,
   closeAlert,
   toggleTheme,
@@ -33,6 +36,4 @@ export {
   addWishlistItem,
   removeWishlistItem,
   resetWishlist,
-  add,
-  clear,
 };
