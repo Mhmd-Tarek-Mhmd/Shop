@@ -13,7 +13,7 @@ import InformationCard from "./informationCard";
 function Profile() {
   const user = useSelector((state) => state.authedUser);
 
-  useDocumentTitle(user.displayName || "Profile");
+  useDocumentTitle(user && user.displayName ? user.displayName : "Profile");
 
   return (
     <Section title="Profile">
