@@ -3,7 +3,7 @@ import { useState } from "preact/hooks";
 import TextField from "@mui/material/TextField";
 
 const handleEmailInput = (e) => {
-  const pattern = /\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,4}/;
+  const pattern = /\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,4}$/;
   e.target.setCustomValidity(
     !pattern.test(e.target.value) && !e.target.validity.valueMissing
       ? "Enter a valid email"

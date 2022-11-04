@@ -1,14 +1,10 @@
 import Box from "@mui/material/Box";
-import Alert from "@mui/material/Alert";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
-import Snackbar from "@mui/material/Snackbar";
-import Backdrop from "@mui/material/Backdrop";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import CircularProgress from "@mui/material/CircularProgress";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -16,19 +12,9 @@ import Input from "./input";
 import GoogleAuthButton from "./google";
 
 function Template({
+  form,
   prefix,
   successCB,
-  form,
-
-  msg,
-  setMsg,
-  isOpenBackdrop,
-  isOpenSuccess,
-  isOpenError,
-  setIsOpenSuccess,
-  setIsOpenError,
-  getGoogleErrorMsg,
-
   isModalOpen,
   setIsModalOpen,
   handleModalSubmit,
@@ -46,12 +32,7 @@ function Template({
           Sign {prefix}
         </Typography>
 
-        <GoogleAuthButton
-          prefix={prefix}
-          setMsg={setMsg}
-          successCB={successCB}
-          catchCB={getGoogleErrorMsg}
-        />
+        <GoogleAuthButton prefix={prefix} successCB={successCB} />
 
         <Divider
           sx={{
@@ -77,17 +58,8 @@ function Template({
         {form}
       </Container>
 
-      <Fallback
-        msg={msg}
-        isOpenBackdrop={isOpenBackdrop}
-        isOpenSuccess={isOpenSuccess}
-        isOpenError={isOpenError}
-        setIsOpenSuccess={setIsOpenSuccess}
-        setIsOpenError={setIsOpenError}
-      />
-
       {prefix === "in" && (
-        <ForgetForm
+        <ForgetModalForm
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
           handleModalSubmit={handleModalSubmit}
@@ -99,51 +71,11 @@ function Template({
 
 export default Template;
 
-const Fallback = ({
-  msg,
-  isOpenBackdrop,
-  isOpenSuccess,
-  isOpenError,
-  setIsOpenSuccess,
-  setIsOpenError,
+const ForgetModalForm = ({
+  isModalOpen,
+  setIsModalOpen,
+  handleModalSubmit,
 }) => (
-  <>
-    <Backdrop
-      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      open={isOpenBackdrop}
-    >
-      <CircularProgress color="inherit" />
-    </Backdrop>
-    <Snackbar
-      open={isOpenSuccess}
-      autoHideDuration={4000}
-      onClose={() => setIsOpenSuccess(false)}
-    >
-      <Alert
-        onClose={() => setIsOpenSuccess(false)}
-        severity="success"
-        sx={{ width: "100%" }}
-      >
-        {msg}
-      </Alert>
-    </Snackbar>
-    <Snackbar
-      open={isOpenError}
-      autoHideDuration={4000}
-      onClose={() => setIsOpenError(false)}
-    >
-      <Alert
-        onClose={() => setIsOpenError(false)}
-        severity="error"
-        sx={{ width: "100%" }}
-      >
-        {msg}
-      </Alert>
-    </Snackbar>
-  </>
-);
-
-const ForgetForm = ({ isModalOpen, setIsModalOpen, handleModalSubmit }) => (
   <Modal
     open={isModalOpen}
     onClose={() => setIsModalOpen(false)}

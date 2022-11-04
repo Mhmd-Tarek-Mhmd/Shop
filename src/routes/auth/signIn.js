@@ -21,11 +21,7 @@ function SignIn() {
     return msg;
   };
 
-  return (
-    <>
-      <Controller prefix="in" getErrorMsg={handleErrorMsg} Form={Form} />
-    </>
-  );
+  return <Controller prefix="in" getErrorMsg={handleErrorMsg} Form={Form} />;
 }
 
 export default SignIn;

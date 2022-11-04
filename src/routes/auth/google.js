@@ -1,9 +1,14 @@
+import { useDispatch } from "react-redux";
+
 import { googleAuth } from "../../firebase";
+import { openAlert } from "../../store/actions";
 
 import Button from "@mui/material/Button";
 import SvgIcon from "@mui/material/SvgIcon";
 
-function GoogleAuthButton({ prefix, successCB, catchCB }) {
+function GoogleAuthButton({ prefix, successCB }) {
+  const dispatch = useDispatch();
+
   const handleAuth = () => {
     googleAuth()
       .then((results) => {
@@ -11,7 +16,15 @@ function GoogleAuthButton({ prefix, successCB, catchCB }) {
       })
       .catch((error) => {
         console.log(error);
-        catchCB && catchCB(error);
+        let msg;
+
+        if (error.code === "auth/internal-error") {
+          msg = "Check your internet connection";
+        } else {
+          msg = "Something went wrong. Try again";
+        }
+
+        dispatch(openAlert("error", msg));
       });
   };
 
