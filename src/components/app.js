@@ -8,6 +8,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { getProducts } from "../store/actions";
 
 import Nav from "../layouts/nav";
+import Feedback from "./feedback";
 import Main from "../layouts/main";
 import Footer from "../layouts/footer";
 
@@ -19,7 +20,7 @@ function App() {
     [themeState]
   );
 
-  useEffect(() => dispatch(getProducts()), [dispatch]);
+  useEffect(() => dispatch(getProducts()), []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -29,6 +30,7 @@ function App() {
         <Main />
         <Footer />
       </Box>
+      <Feedback />
     </ThemeProvider>
   );
 }
