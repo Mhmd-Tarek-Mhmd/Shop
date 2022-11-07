@@ -1,6 +1,6 @@
-import { route } from "preact-router";
 import { useState } from "preact/hooks";
 import { useDispatch } from "react-redux";
+import { useRouter, route } from "preact-router";
 
 import { useDocumentTitle } from "../../hooks";
 import {
@@ -35,25 +35,30 @@ const setUsername = (user) => {
 function Controller({ prefix, getErrorMsg, Form }) {
   useDocumentTitle(`Sign ${prefix}`);
   const dispatch = useDispatch();
+  const { previous: prevUrl } = useRouter()[0];
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openErrorAlert = (msg) => dispatch(openAlert("error", msg));
   const openSuccessAlert = (msg) => dispatch(openAlert("success", msg));
 
-  const successCB = ({ user }, data) => {
+  const successCB = (results, data) => {
+    let url;
+
     if (prefix === "up") {
       validateEmail().then(() => {
         openSuccessAlert("A validation email sent to your inbox");
         data && setUsername(data);
+        url = "/auth/sign-in";
       });
     } else {
-      dispatch(add(user));
+      dispatch(add(results.user));
       openSuccessAlert("Success");
+      url = !prevUrl || prevUrl === "/auth/sign-up" ? "/" : prevUrl;
     }
 
     dispatch(closeBackdrop());
     const successTimer = setTimeout(() => {
-      route(prefix === "up" ? "/auth/sign-in" : "/");
+      route(url);
       clearTimeout(successTimer);
     }, 2000);
   };
