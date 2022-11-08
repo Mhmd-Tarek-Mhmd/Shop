@@ -1,4 +1,5 @@
-import Route, { route } from "preact-router";
+import { route } from "preact-router";
+import Match from "preact-router/Match";
 import { useLayoutEffect } from "preact/hooks";
 
 import SignUp from "./signUp";
@@ -12,10 +13,11 @@ function Auth() {
   }, [location.pathname]);
 
   return (
-    <Route>
-      <SignUp path="auth/sign-up" />
-      <SignIn path="auth/sign-in" />
-    </Route>
+    <Match path="/auth/:rest*">
+      {({ matches, path, url }) =>
+        url.includes("sign-up") ? <SignUp /> : <SignIn />
+      }
+    </Match>
   );
 }
 
