@@ -6,10 +6,12 @@ import {
   signUp,
   signIn,
   logout,
-  forgetPassword,
-  updateUser,
-  updateMail,
+  updateName,
+  updateEmail,
+  updateAvatar,
+  deleteProfile,
   updatePassword,
+  forgetPassword,
 } from "./auth";
 
 export {
@@ -20,8 +22,10 @@ export {
   signUp,
   signIn,
   logout,
-  forgetPassword,
-  updateUser,
-  updateMail,
+  updateName,
+  updateEmail,
+  updateAvatar,
+  deleteProfile,
   updatePassword,
+  forgetPassword,
 };

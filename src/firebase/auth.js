@@ -1,22 +1,23 @@
 import {
   getAuth,
   signOut,
+  updateProfile,
   signInWithPopup,
   GoogleAuthProvider,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
   sendEmailVerification,
-  updateProfile,
-  updateEmail,
+  sendPasswordResetEmail,
+  updateEmail as updateMail,
+  signInWithEmailAndPassword,
   updatePassword as updatePass,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
+import { uploadAvatar, getAvatarURL } from "./storage";
 
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 /*
-  [1] Create/Auth methods
+  [1] Auth/Create methods
 */
 
 export const googleAuth = () => signInWithPopup(auth, provider);
@@ -34,12 +35,27 @@ export const logout = () => signOut(auth);
 export const forgetPassword = (email) => sendPasswordResetEmail(auth, email);
 
 /*
-  [2] Update methods
+  [2] Update/Delete methods
 */
 
-export const updateUser = (obj) => updateProfile(auth.currentUser, obj);
+const updateUser = (obj) => updateProfile(auth.currentUser, obj);
 
-export const updateMail = (email) => updateEmail(auth.currentUser, email);
+export const updateAvatar = (file, cb) => {
+  const uid = auth.currentUser.uid;
 
-export const updatePassword = (password) =>
-  updatePass(auth.currentUser, password);
+  return uploadAvatar(uid, file).then(() => {
+    getAvatarURL(uid).then((photoURL) => {
+      updateUser({ photoURL });
+      cb(photoURL);
+    });
+  });
+};
+
+export const updateName = (displayName) => updateUser({ displayName });
+
+export const updateEmail = (newEmail) => updateMail(auth.currentUser, newEmail);
+
+export const updatePassword = (newPassword) =>
+  updatePass(auth.currentUser, newPassword);
+
+export const deleteProfile = () => deleteUser(auth.currentUser);
