@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 
+import { update } from "../../store/actions";
 import { updateAvatar } from "../../firebase";
-import { update, openAlert } from "../../store/actions";
-import { defaultErrorMessages } from "../auth/controller";
+import { useFireAuthRedux } from "../../hooks";
 
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -65,17 +65,18 @@ const Item = ({ title, value }) => (
 
 const FileInput = () => {
   const dispatch = useDispatch();
+  const changeAvatarHook = useFireAuthRedux(updateAvatar);
 
   const handleChange = (e) => {
     if (e.target.files.length) {
-      updateAvatar(e.target.files[0], (photoURL) => {
-        dispatch(update({ photoURL }));
-        dispatch(openAlert("success", "Avatar changed"));
-      }).catch((error) => {
-        console.log(error);
-        const msg = defaultErrorMessages(error.code);
-        dispatch(openAlert("error", msg));
-      });
+      changeAvatarHook(
+        [
+          e.target.files[0],
+          (photoURL) => dispatch(update({ photoURL }))
+        ],
+        [],
+        { getMsg: () => "Avatar changed" }
+      );
     }
   };
 

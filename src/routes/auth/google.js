@@ -1,31 +1,20 @@
-import { useDispatch } from "react-redux";
-
 import { googleAuth } from "../../firebase";
-import { openAlert } from "../../store/actions";
+import { useFireAuthRedux } from "../../hooks";
 
 import Button from "@mui/material/Button";
 import SvgIcon from "@mui/material/SvgIcon";
 
-function GoogleAuthButton({ prefix, successCB }) {
-  const dispatch = useDispatch();
+function GoogleAuthButton({ prefix, successCB, getSuccessMsg }) {
+  const googleAuthHook = useFireAuthRedux(googleAuth);
 
   const handleAuth = () => {
-    googleAuth()
-      .then((results) => {
-        successCB && successCB(results);
-      })
-      .catch((error) => {
-        console.log(error);
-        let msg;
-
-        if (error.code === "auth/internal-error") {
-          msg = "Check your internet connection";
-        } else {
-          msg = "Something went wrong. Try again";
-        }
-
-        dispatch(openAlert("error", msg));
-      });
+    const getErrorMsg = (error) => error.code === "auth/internal-error" && "Check your internet connection";
+    googleAuthHook(
+      [],
+      [],
+      { cb: successCB, getMsg: getSuccessMsg },
+      { getMsg: getErrorMsg }
+    );
   };
 
   return (

@@ -2,6 +2,7 @@ import useUniqueID from "./useUniqueID";
 import useForceUpdate from "./useForceUpdate";
 import useThemeColors from "./useThemeColors";
 import useDocumentTitle from "./useDocumentTitle";
+import useFireAuthRedux from "./useFireAuthRedux";
 import useThemeBreakpoints from "./useThemeBreakpoints";
 
 export {
@@ -9,5 +10,6 @@ export {
   useThemeColors,
   useForceUpdate,
   useDocumentTitle,
+  useFireAuthRedux,
   useThemeBreakpoints,
 };

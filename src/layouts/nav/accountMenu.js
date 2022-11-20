@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { logout } from "../../firebase";
 import { clear } from "../../store/actions";
+import { useFireAuthRedux } from "../../hooks";
 
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -15,13 +16,14 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 
 function AccountMenu({ user }) {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
+  const logoutHook = useFireAuthRedux(logout, clear);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (e) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
-  const handleLogout = () => logout().then(() => dispatch(clear()));
+  //const handleLogout = () => logout().then(() => dispatch(clear()));
 
   useEffect(() => {if (open) document.body.style.paddingRight = 0}, [open]);
 
@@ -91,7 +93,7 @@ function AccountMenu({ user }) {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleLogout}>
+        <MenuItem onClick={() => logoutHook()}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

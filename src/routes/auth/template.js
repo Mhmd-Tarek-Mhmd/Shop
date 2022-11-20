@@ -16,6 +16,7 @@ function Template({
   prefix,
   successCB,
   isModalOpen,
+  getSuccessMsg,
   setIsModalOpen,
   handleModalSubmit,
 }) {
@@ -32,7 +33,7 @@ function Template({
           Sign {prefix}
         </Typography>
 
-        <GoogleAuthButton prefix={prefix} successCB={successCB} />
+        <GoogleAuthButton prefix={prefix} successCB={successCB} getSuccessMsg={getSuccessMsg} />
 
         <Divider
           sx={{
