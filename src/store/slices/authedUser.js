@@ -1,10 +1,18 @@
-import { createSlice, createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createListenerMiddleware,
+  isAnyOf,
+} from "@reduxjs/toolkit";
 
 const initialState = sessionStorage.authedUser
   ? JSON.parse(sessionStorage.authedUser)
   : null;
 
-const userFormat = ({ displayName, email, emailVerified, photoURL }) => ({
+const userFormat = ({
+  providerId,
+  user: { displayName, email, emailVerified, photoURL },
+}) => ({
+  providerId,
   displayName,
   email,
   emailVerified,

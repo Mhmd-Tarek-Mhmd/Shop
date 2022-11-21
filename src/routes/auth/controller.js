@@ -45,7 +45,7 @@ function Controller({ prefix, getErrorMsg, Form }) {
         url = "/auth/sign-in";
       });
     } else {
-      dispatch(add(results.user));
+      dispatch(add(results));
       url = !prevUrl || prevUrl === "/auth/sign-up" ? "/" : prevUrl;
     }
 
