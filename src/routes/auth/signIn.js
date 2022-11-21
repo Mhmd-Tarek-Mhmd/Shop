@@ -5,8 +5,8 @@ import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
-import Input from "./input";
 import Controller from "./controller";
+import Input from "../../components/input";
 
 function SignIn() {
   const handleErrorMsg = (errorCode) => {
@@ -40,7 +40,6 @@ const Form = ({ handleSubmit, setIsModalOpen }) => (
       name="password"
       label="Password"
       autoComplete="current-password"
-      inputProps={{ minLength: 6 }}
     />
     <FormControlLabel
       control={<Checkbox value="remember" color="primary" />}

@@ -2,6 +2,7 @@ import { useState } from "preact/hooks";
 
 import TextField from "@mui/material/TextField";
 
+const minLength = 6;
 const handleEmailInput = (e) => {
   const pattern = /\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,4}$/;
   e.target.setCustomValidity(
@@ -23,12 +24,18 @@ function Input({ inputProps, ...props }) {
 
   return (
     <TextField
-      required
-      fullWidth
       error={isError}
-      {...props}
       helperText={helperText}
-      inputProps={Object.assign({ onBlur: handleInput }, inputProps)}
+      required={props.required || true}
+      fullWidth={props.fullWidth || true}
+      inputProps={Object.assign(
+        {
+          onBlur: handleInput,
+          ...(props.type === "password" && { minLength }),
+        },
+        inputProps
+      )}
+      {...props}
     />
   );
 }

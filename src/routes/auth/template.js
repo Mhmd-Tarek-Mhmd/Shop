@@ -8,8 +8,8 @@ import Typography from "@mui/material/Typography";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import SendIcon from "@mui/icons-material/Send";
 
-import Input from "./input";
 import GoogleAuthButton from "./google";
+import Input from "../../components/input";
 
 function Template({
   form,

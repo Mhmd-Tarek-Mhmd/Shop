@@ -3,8 +3,8 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
-import Input from "./input";
 import Controller from "./controller";
+import Input from "../../components/input";
 
 function SignUp() {
   const handleErrorMsg = (errorCode) => {
@@ -26,10 +26,20 @@ const Form = ({ handleSubmit }) => (
   <Box component="form" onSubmit={handleSubmit}>
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
-        <Input name="firstName" label="First Name" autoComplete="given-name" />
+        <Input
+          fullWidth={false}
+          name="firstName"
+          label="First Name"
+          autoComplete="given-name"
+        />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Input name="lastName" label="Last Name" autoComplete="family-name" />
+        <Input
+          fullWidth={false}
+          name="lastName"
+          label="Last Name"
+          autoComplete="family-name"
+        />
       </Grid>
       <Grid item xs={12}>
         <Input
@@ -45,7 +55,6 @@ const Form = ({ handleSubmit }) => (
           name="password"
           label="Password"
           autoComplete="new-password"
-          inputProps={{ minLength: 6 }}
         />
       </Grid>
     </Grid>
