@@ -60,13 +60,12 @@ function Controller({ prefix, getErrorMsg, Form }) {
 
     const data = new FormData(e.currentTarget);
     const signHook = prefix === "up" ? signUpHook : signInHook;
+    const error = { getMsg: (err) => getErrorMsg(err.code) };
     const success = {
       cb: (results) => successCB(results, data),
       getMsg: getSuccessMsg,
     };
-    signHook([data.get("email"), data.get("password")], [], success, {
-      getMsg: getErrorMsg,
-    });
+    signHook([data.get("email"), data.get("password")], [], success, error);
   };
 
   const handleModalSubmit = (e) => {
