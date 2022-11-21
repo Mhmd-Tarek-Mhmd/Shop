@@ -13,8 +13,8 @@ const defaultErrorMessages = (errorCode) => {
 function useFireAuthRedux(fireAuthMethod, reduxAction) {
   const dispatch = useDispatch();
   const callback = (type, msg, cb, results) => {
-    cb && cb(results);
     dispatch(openAlert(type, msg));
+    cb && cb(results);
   };
 
   return (methodArgs=[], actionArgs=[], success, error) => {
@@ -29,7 +29,7 @@ function useFireAuthRedux(fireAuthMethod, reduxAction) {
       .catch((err) => {
         console.log(err);
         const msg = error?.getMsg(err) || defaultErrorMessages(err.code);
-        callback("error", msg, err);
+        callback("error", msg, error?.cb, err);
       });
 
     dispatch(closeBackdrop());
