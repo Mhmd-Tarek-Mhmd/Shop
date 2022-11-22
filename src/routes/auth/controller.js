@@ -20,7 +20,7 @@ const setUsername = (user) => {
   updateName(`${firstName} ${lastName}`);
 };
 
-function Controller({ prefix, getErrorMsg, Form }) {
+function Controller({ prefix, Form }) {
   useDocumentTitle(`Sign ${prefix}`);
 
   const dispatch = useDispatch();
@@ -60,12 +60,11 @@ function Controller({ prefix, getErrorMsg, Form }) {
 
     const data = new FormData(e.currentTarget);
     const signHook = prefix === "up" ? signUpHook : signInHook;
-    const error = { getMsg: (err) => getErrorMsg(err.code) };
     const success = {
       cb: (results) => successCB(results, data),
       getMsg: getSuccessMsg,
     };
-    signHook([data.get("email"), data.get("password")], [], success, error);
+    signHook([data.get("email"), data.get("password")], [], success);
   };
 
   const handleModalSubmit = (e) => {

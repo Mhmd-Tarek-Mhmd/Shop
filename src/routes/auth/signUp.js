@@ -7,17 +7,7 @@ import Controller from "./controller";
 import Input from "../../components/input";
 
 function SignUp() {
-  const handleErrorMsg = (errorCode) => {
-    let msg;
-
-    if (errorCode === "auth/email-already-in-use") {
-      msg = "This mail is already registered";
-    }
-
-    return msg;
-  };
-
-  return <Controller prefix="up" getErrorMsg={handleErrorMsg} Form={Form} />;
+  return <Controller prefix="up" Form={Form} />;
 }
 
 export default SignUp;

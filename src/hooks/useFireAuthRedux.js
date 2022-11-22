@@ -2,6 +2,11 @@ import { useDispatch } from "react-redux";
 
 import { openAlert, openBackdrop, closeBackdrop } from "../store/actions";
 
+const errorMessages = {
+  "auth/wrong-password": "Wrong password. Try again",
+  "auth/user-not-found": "This email isn't registered",
+  "auth/email-already-in-use": "This mail is already registered",
+};
 const defaultErrorMessages = (errorCode) => {
   if (errorCode === "auth/network-request-failed") {
     return "Check your internet connection";
@@ -17,7 +22,7 @@ function useFireAuthRedux(fireAuthMethod, reduxAction) {
     cb && cb(results);
   };
 
-  return (methodArgs=[], actionArgs=[], success, error) => {
+  return (methodArgs = [], actionArgs = [], success, error) => {
     dispatch(openBackdrop());
 
     fireAuthMethod(...methodArgs)
@@ -28,7 +33,10 @@ function useFireAuthRedux(fireAuthMethod, reduxAction) {
       })
       .catch((err) => {
         console.log(err);
-        const msg = error?.getMsg(err) || defaultErrorMessages(err.code);
+        const msg =
+          error?.getMsg(err) ||
+          errorMessages[err.code] ||
+          defaultErrorMessages(err.code);
         callback("error", msg, error?.cb, err);
       });
 

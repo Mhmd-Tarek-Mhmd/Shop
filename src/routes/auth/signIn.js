@@ -9,19 +9,7 @@ import Controller from "./controller";
 import Input from "../../components/input";
 
 function SignIn() {
-  const handleErrorMsg = (errorCode) => {
-    let msg;
-
-    if (errorCode === "auth/user-not-found") {
-      msg = "This email isn't registered";
-    } else if (errorCode === "auth/wrong-password") {
-      msg = "Wrong password. Try again";
-    }
-
-    return msg;
-  };
-
-  return <Controller prefix="in" getErrorMsg={handleErrorMsg} Form={Form} />;
+  return <Controller prefix="in" Form={Form} />;
 }
 
 export default SignIn;
