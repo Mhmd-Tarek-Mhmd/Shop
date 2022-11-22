@@ -1,20 +1,25 @@
 import {
   getAuth,
   signOut,
+  deleteUser,
   updateProfile,
   signInWithPopup,
+  EmailAuthProvider,
   GoogleAuthProvider,
   sendEmailVerification,
   sendPasswordResetEmail,
   updateEmail as updateMail,
   signInWithEmailAndPassword,
   updatePassword as updatePass,
+  reauthenticateWithCredential,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { uploadAvatar, getAvatarURL } from "./storage";
 
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
+const getCredential = (password) =>
+  EmailAuthProvider.credential(auth.currentUser.email, password);
 
 /*
   [1] Auth/Create methods
@@ -33,6 +38,11 @@ export const signIn = (email, password) =>
 export const logout = () => signOut(auth);
 
 export const forgetPassword = (email) => sendPasswordResetEmail(auth, email);
+
+export const reAuth = (password) =>
+  reauthenticateWithCredential(auth.currentUser, getCredential(password));
+
+export const googleReAuth = () => googleAuth();
 
 /*
   [2] Update/Delete methods

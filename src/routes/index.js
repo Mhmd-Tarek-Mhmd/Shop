@@ -9,6 +9,7 @@ import Products from "./products";
 import Checkout from "./checkout";
 import WishList from "./wishList";
 import NotFound from "./notFound";
+import Settings from "./settings";
 
 function Routes() {
   return (
@@ -21,6 +22,7 @@ function Routes() {
       <Products path="/products" />
       <Checkout path="/checkout" />
       <WishList path="/wishlist" />
+      <Settings path="/settings" />
       <Product path="/product/:id" />
     </Router>
   );
