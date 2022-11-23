@@ -11,7 +11,7 @@ import Section from "../../../components/section";
 function Preview({ product }) {
   return (
     <Section component="div" role="region" aria-label="Product preview">
-      <Container maxWidth="xl">
+      <Container maxWidth="md">
         <Toolbar
           disableGutters
           sx={{
