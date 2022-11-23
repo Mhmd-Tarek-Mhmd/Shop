@@ -1,4 +1,4 @@
-const pages = ["home"];
+const pages = ["home", "products"];
 
 const PagesLinks = ({ Element, ...props }) => {
   return pages.map((page) => (
