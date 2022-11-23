@@ -1,3 +1,5 @@
+import Match from "preact-router/Match";
+
 import { useThemeColors } from "../hooks";
 
 import Box from "@mui/material/Box";
@@ -15,28 +17,34 @@ function Footer() {
   const grey = useThemeColors("grey", "hex", 200, 800);
 
   return (
-    <Box
-      component="footer"
-      sx={{
-        py: 2,
-        backgroundColor: grey,
-      }}
-    >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-          <Logo />
-          <SocialIcons />
-        </Toolbar>
+    <Match>
+      {({ url }) =>
+        !url.includes("auth") && (
+          <Box
+            component="footer"
+            sx={{
+              py: 2,
+              backgroundColor: grey,
+            }}
+          >
+            <Container maxWidth="xl">
+              <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+                <Logo />
+                <SocialIcons />
+              </Toolbar>
 
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ textAlign: "center" }}
-        >
-          Copyright © {new Date().getFullYear()} Shop All rights reserved.
-        </Typography>
-      </Container>
-    </Box>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ textAlign: "center" }}
+              >
+                Copyright © {new Date().getFullYear()} Shop All rights reserved.
+              </Typography>
+            </Container>
+          </Box>
+        )
+      }
+    </Match>
   );
 }
 
