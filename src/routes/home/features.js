@@ -101,6 +101,8 @@ function FeatureContainer(props) {
   return (
     <Box
       sx={{
+        mx: "auto",
+        maxWidth: 1000,
         position: "relative",
         display: { md: "grid" },
         top: { xs: "44px", md: 0 },
