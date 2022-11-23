@@ -21,7 +21,7 @@ function Template({
   handleModalSubmit,
 }) {
   return (
-    <Box component="section" sx={{ my: 7.5 }}>
+    <Box component="section" sx={{ py: 7.5 }}>
       <Container
         maxWidth="xs"
         sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}
