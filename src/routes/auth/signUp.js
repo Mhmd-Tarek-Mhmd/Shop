@@ -17,7 +17,6 @@ const Form = ({ handleSubmit }) => (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
         <Input
-          fullWidth={false}
           name="firstName"
           label="First Name"
           autoComplete="given-name"
@@ -25,7 +24,6 @@ const Form = ({ handleSubmit }) => (
       </Grid>
       <Grid item xs={12} sm={6}>
         <Input
-          fullWidth={false}
           name="lastName"
           label="Last Name"
           autoComplete="family-name"
