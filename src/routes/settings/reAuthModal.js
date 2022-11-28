@@ -49,7 +49,7 @@ const ReAuth = ({ isGoogleProvider, reAuthHandler }) => {
   const googleReAuthHook = useFireAuthRedux(googleReAuth);
 
   const handleReAuth = (e) => {
-    const success = { cb: reAuthHandler };
+    const success = { cb: reAuthHandler, getMsg: () => "" };
 
     if (isGoogleProvider) {
       googleReAuthHook([], [], success);
