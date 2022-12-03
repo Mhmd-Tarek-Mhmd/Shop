@@ -16,26 +16,26 @@ function Feedback() {
 
   return (
     <>
-      <Backdrop
-        open={backdrop.isOpen}
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
-
-      <Snackbar
-        open={alert.isOpen}
-        autoHideDuration={3000}
-        onClose={handleAlertClose}
-      >
-        <Alert
-          sx={{ width: "100%" }}
-          severity={alert.severity}
-          onClose={handleAlertClose}
+      {backdrop.isOpen && (
+        <Backdrop
+          open
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         >
-          {alert.msg}
-        </Alert>
-      </Snackbar>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
+
+      {alert.isOpen && (
+        <Snackbar open autoHideDuration={2000} onClose={handleAlertClose}>
+          <Alert
+            sx={{ width: "100%" }}
+            severity={alert.severity}
+            onClose={handleAlertClose}
+          >
+            {alert.msg}
+          </Alert>
+        </Snackbar>
+      )}
     </>
   );
 }
