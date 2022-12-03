@@ -18,7 +18,7 @@ const defaultErrorMessages = (errorCode) => {
 function useFireAuthRedux(fireAuthMethod, reduxAction) {
   const dispatch = useDispatch();
   const callback = (type, msg, cb, results) => {
-    dispatch(openAlert(type, msg));
+    msg !== null && dispatch(openAlert(type, msg));
     cb && cb(results);
   };
 
@@ -27,7 +27,8 @@ function useFireAuthRedux(fireAuthMethod, reduxAction) {
 
     fireAuthMethod(...methodArgs)
       .then((results) => {
-        const msg = success?.getMsg() || "Success";
+        const msg =
+          success?.getMsg() === null ? null : success?.getMsg() || "Success";
         reduxAction && dispatch(reduxAction(...actionArgs));
         callback("success", msg, success?.cb, results);
       })
