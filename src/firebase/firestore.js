@@ -1,8 +1,10 @@
 import {
+  doc,
+  getDocs,
+  updateDoc,
+  collection,
   getFirestore,
   enableIndexedDbPersistence,
-  collection,
-  getDocs,
 } from "firebase/firestore";
 
 import app from "./app";
@@ -20,5 +22,11 @@ async function getProducts() {
   productsSnapshot.forEach((doc) => products.push(doc.data()));
   return products;
 }
+
+// Add a product review
+export const addReview = (product) => {
+  const productDoc = doc(db, "products", product.id);
+  return updateDoc(productDoc, product);
+};
 
 export { getProducts };

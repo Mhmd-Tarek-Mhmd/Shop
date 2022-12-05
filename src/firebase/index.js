@@ -1,4 +1,4 @@
-import { getProducts } from "./firestore";
+import { getProducts, addReview } from "./firestore";
 import {
   signUp,
   signIn,
@@ -17,6 +17,7 @@ import {
 
 export {
   getProducts,
+  addReview,
   signUp,
   signIn,
   logout,

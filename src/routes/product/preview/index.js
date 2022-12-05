@@ -30,12 +30,15 @@ function Preview({ product }) {
         </Toolbar>
 
         <Info
+          product={product}
           reviews={product.reviews}
           information={[
-            `added at: ${(new Date(product.createdAt.nanoseconds)).toLocaleDateString()}`,
-            `category: ${product.category.replaceAll("-", " ")}`,
-            `discount percentage: ${product.discount}`,
-            `quantity: ${product.quantity}`,
+            `Added At: ${new Date(
+              product.createdAt.nanoseconds
+            ).toLocaleDateString()}`,
+            `Category: ${product.category.replaceAll("-", " ")}`,
+            `Discount Percentage: ${product.discount}`,
+            `Quantity: ${product.quantity}`,
           ]}
         />
       </Container>
