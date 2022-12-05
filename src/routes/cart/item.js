@@ -20,7 +20,7 @@ function Item({ item }) {
           <ImageWithFallback
             width="48"
             height="48"
-            src={item.images[0]}
+            src={item.thumbnail}
             alt={item.title}
           />
           <Typography

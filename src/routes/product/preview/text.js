@@ -12,12 +12,12 @@ function Text({ product }) {
 
       <Rating rating={product.rating} />
 
-      <PriceBox sale={product.sale} price={product.price} />
+      <PriceBox sale={product.discount} price={product.price} />
 
       <Typography
         sx={{ py: 1, color: ({ palette }) => palette.text.secondary }}
       >
-        {product.information.desc}
+        {product.description}
       </Typography>
     </>
   );
@@ -31,7 +31,7 @@ const getPriceAfterSale = (price, sale) => {
 };
 
 const PriceBox = ({ sale, price }) => (
-  <Box sx={{ fontWeight: "bold", display: "flex", alignItems: "center", gap: 1 }}>
+  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
     {sale ? (
         <>
           <del>{price}$</del>

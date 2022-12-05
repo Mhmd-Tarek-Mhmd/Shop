@@ -11,7 +11,7 @@ import Section from "../../../components/section";
 function Preview({ product }) {
   return (
     <Section component="div" role="region" aria-label="Product preview">
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Toolbar
           disableGutters
           sx={{
@@ -29,7 +29,15 @@ function Preview({ product }) {
           </Box>
         </Toolbar>
 
-        <Info information={product.information} />
+        <Info
+          reviews={product.reviews}
+          information={[
+            `added at: ${(new Date(product.createdAt.nanoseconds)).toLocaleDateString()}`,
+            `category: ${product.category.replaceAll("-", " ")}`,
+            `discount percentage: ${product.discount}`,
+            `quantity: ${product.quantity}`,
+          ]}
+        />
       </Container>
     </Section>
   );

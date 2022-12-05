@@ -19,7 +19,7 @@ const getPriceAfterSale = (price, sale) => {
 };
 
 function ProductCard({ product, badgeType }) {
-  return product ? (
+  return (
     <Card
       component="article"
       aria-label={product.title}
@@ -36,7 +36,7 @@ function ProductCard({ product, badgeType }) {
         component="img"
         alt={product.title}
         height="100"
-        image={product.images[0]}
+        image={product.thumbnail}
         onError={(e) => (e.target.src = fallback)}
         sx={{ mx: "auto", pt: "15px", width: "auto", maxWidth: "100%" }}
       />
@@ -55,14 +55,14 @@ function ProductCard({ product, badgeType }) {
             WebkitLineClamp: "2",
           }}
         >
-          {product.title}
+          {product.description}
         </Typography>
         <Typography>
-          {product.sale ? (
+          {product.discount ? (
             <>
               <ProductPrice old price={product.price} />{" "}
               <ProductPrice
-                price={getPriceAfterSale(product.price, product.sale)}
+                price={getPriceAfterSale(product.price, product.discount)}
               />
             </>
           ) : (
@@ -84,8 +84,6 @@ function ProductCard({ product, badgeType }) {
         </Button>
       </CardActions>
     </Card>
-  ) : (
-    <Skeleton variant="rectangular" width={345} height="450px" />
   );
 }
 

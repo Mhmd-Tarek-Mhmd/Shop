@@ -58,6 +58,7 @@ export function AddCart({ product, form }) {
         variant="contained"
         sx={{ flexGrow: 1 }}
         disabled={isAdded}
+        size="small"
       >
         Add to cart
       </Button>

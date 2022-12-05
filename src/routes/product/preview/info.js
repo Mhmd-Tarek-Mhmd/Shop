@@ -3,24 +3,23 @@ import Typography from "@mui/material/Typography";
 
 import Tabs from "../../../components/tabs";
 
-function Info({ information }) {
+function Info({ information, reviews }) {
   return (
     <Tabs
       tabLabels={[
         "Information",
-        information.reviews.length
-          ? `Reviews (${information.reviews.length})`
+        reviews.length
+          ? `Reviews (${reviews.length})`
           : "Reviews",
       ]}
       tabPanels={[
         <Panel
           key={0}
-          arr={information.info}
-          fallbackLabel="No information availble"
+          arr={information}
         />,
         <Panel
           key={1}
-          arr={information.reviews}
+          arr={reviews}
           fallbackLabel="No reviews availble"
           sx={{ listStyle: "none" }}
         />,

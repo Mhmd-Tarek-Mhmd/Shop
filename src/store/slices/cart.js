@@ -21,7 +21,7 @@ const cartSlice = createSlice({
       Object.assign({}, action.payload, {
         total: getTotal(
           action.payload.price,
-          action.payload.sale,
+          action.payload.discount,
           action.payload.quantity
         ),
       }),
@@ -35,7 +35,7 @@ const cartSlice = createSlice({
           ? item
           : Object.assign({}, item, {
               quantity,
-              total: getTotal(item.price, item.sale, quantity),
+              total: getTotal(item.price, item.discount, quantity),
             })
       ),
     increaseQuantity: (state, action) =>
@@ -44,7 +44,7 @@ const cartSlice = createSlice({
           ? item
           : Object.assign({}, item, {
               quantity: item.quantity + 1,
-              total: getTotal(item.price, item.sale, item.quantity + 1),
+              total: getTotal(item.price, item.discount, item.quantity + 1),
             })
       ),
     decreaseQuantity: (state, action) =>
@@ -53,7 +53,7 @@ const cartSlice = createSlice({
           ? item
           : Object.assign({}, item, {
               quantity: item.quantity - 1,
-              total: getTotal(item.price, item.sale, item.quantity - 1),
+              total: getTotal(item.price, item.discount, item.quantity - 1),
             })
       ),
   },

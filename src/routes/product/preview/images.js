@@ -12,7 +12,7 @@ const generateSlides = (product) => {
   };
 
   return product.images.map((image) => (
-    <SplideSlide key={product.id}>
+    <SplideSlide key={image}>
       <ImageWithFallback src={image} alt={product.title} errorCb={errorCb} />
     </SplideSlide>
   ));

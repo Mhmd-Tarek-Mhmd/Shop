@@ -11,7 +11,7 @@ const getAllFilters = (products = [], type) => {
   const allFilters = {
     "best seller": products.filter((product, i) => i < 13),
     new: products.filter((product, i) => i > 8),
-    sale: products.filter((product) => product.sale),
+    sale: products.filter((product) => product.discount),
   };
 
   if (type === "keys") {
