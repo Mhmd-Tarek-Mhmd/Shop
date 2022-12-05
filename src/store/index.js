@@ -12,6 +12,7 @@ const store = configureStore({
         ignoredActions: [
           "products/getProducts/fulfilled",
           "wishlist/addWishlistItem",
+          "products/updateProduct",
           "cart/addCartItem",
           "authedUser/add",
         ],

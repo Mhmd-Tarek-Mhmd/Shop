@@ -10,7 +10,10 @@ export const getProducts = createAsyncThunk(
 const productsSlice = createSlice({
   name: "products",
   initialState: null,
-  reducers: {},
+  reducers: {
+    updateProduct: (state, { payload }) =>
+      state.map((p) => (p.id === payload.id ? payload : p)),
+  },
   extraReducers: {
     [getProducts.fulfilled]: (state, action) => {
       return action.payload;
@@ -19,3 +22,4 @@ const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
+export const { updateProduct } = productsSlice.actions;
