@@ -10,8 +10,9 @@ const initialState = sessionStorage.authedUser
 
 const userFormat = ({
   providerId,
-  user: { displayName, email, emailVerified, photoURL },
+  user: { uid, displayName, email, emailVerified, photoURL },
 }) => ({
+  uid,
   providerId,
   displayName,
   email,
