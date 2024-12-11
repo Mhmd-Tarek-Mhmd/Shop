@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
-import { useDocumentTitle } from "../../hooks";
+import { useDocumentTitle } from "../hooks";
 
 import Alert from "@mui/material/Alert";
 import Container from "@mui/material/Container";
 
-import ItemList from "./itemList";
-import Section from "../../components/section";
+import CartList from "../containers/cart";
+import Section from "../components/section";
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -15,7 +15,7 @@ function Cart() {
     <Section title="My cart">
       <Container maxWidth="xl" sx={{ py: 4 }}>
         {cart.length ? (
-          <ItemList cart={cart} />
+          <CartList cart={cart} />
         ) : (
           <Alert
             severity="info"

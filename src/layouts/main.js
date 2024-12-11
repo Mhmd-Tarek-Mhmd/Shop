@@ -1,8 +1,6 @@
 import Box from "@mui/material/Box";
 
-import Routes from "../routes";
-
-function Main() {
+function Main(props) {
   return (
     <Box
       component="main"
@@ -13,7 +11,7 @@ function Main() {
         },
       }}
     >
-      <Routes />
+      {props?.children}
     </Box>
   );
 }

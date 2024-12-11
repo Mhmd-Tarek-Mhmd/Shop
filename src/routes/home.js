@@ -1,9 +1,6 @@
-import { useDocumentTitle } from "../../hooks";
+import { useDocumentTitle } from "../hooks";
 
-import Hero from "./hero";
-import Discover from "./discover";
-import Features from "./features";
-import Newsletter from "./newsletter.js";
+import { Hero, Discover, Features, Newsletter } from "../containers/home";
 
 import "@splidejs/react-splide/dist/css/splide-core.min.css";
 

@@ -8,9 +8,9 @@ import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
 
 import {
+  resetWishlist,
   addWishlistItem,
   removeWishlistItem,
-  resetWishlist,
 } from "../store/actions";
 
 // [1] Add

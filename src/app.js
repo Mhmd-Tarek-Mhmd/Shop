@@ -5,12 +5,13 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 
-import { getProducts } from "../store/actions";
+import { getProducts } from "./store/actions";
 
-import Nav from "../layouts/nav";
-import Feedback from "./feedback";
-import Main from "../layouts/main";
-import Footer from "../layouts/footer";
+import Routes from "./routes";
+import Nav from "./layouts/nav";
+import Main from "./layouts/main";
+import Footer from "./layouts/footer";
+import Feedback from "./components/feedback";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,9 @@ function App() {
       <CssBaseline />
       <Box sx={{ height: "100vh" }}>
         <Nav />
-        <Main />
+        <Main>
+          <Routes />
+        </Main>
         <Footer />
       </Box>
       <Feedback />

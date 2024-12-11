@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux";
-import { useDocumentTitle } from "../../hooks";
+import { useDocumentTitle } from "../hooks";
 
-import Preview from "./preview";
-import Related from "./related";
+import { Preview, Related } from "../containers/product";
 
 import("@splidejs/react-splide/dist/css/themes/splide-default.min.css");
 

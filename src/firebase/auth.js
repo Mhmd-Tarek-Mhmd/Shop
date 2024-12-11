@@ -14,9 +14,11 @@ import {
   reauthenticateWithCredential,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+
+import app from "./app";
 import { uploadAvatar, getAvatarURL } from "./storage";
 
-const auth = getAuth();
+const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const getCredential = (password) =>
   EmailAuthProvider.credential(auth.currentUser.email, password);

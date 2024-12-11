@@ -8,7 +8,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/monoton/400.css";
 
-import App from "./components/app";
+import App from "./app";
 
 import store from "./store";
 

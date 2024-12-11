@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
-import { useDocumentTitle } from "../../hooks";
+import { useDocumentTitle } from "../hooks";
 
 import Alert from "@mui/material/Alert";
 import Container from "@mui/material/Container";
 
-import ItemList from "./itemList";
-import Section from "../../components/section";
+import Section from "../components/section";
+import WishlistItems from "../containers/wishlist";
 
 function Wishlist() {
   const wishlist = useSelector((state) => state.wishlist);
@@ -15,7 +15,7 @@ function Wishlist() {
     <Section title="My wishlist">
       <Container maxWidth="xl" sx={{ py: 4 }}>
         {wishlist.length ? (
-          <ItemList wishlist={wishlist} />
+          <WishlistItems wishlist={wishlist} />
         ) : (
           <Alert
             severity="info"

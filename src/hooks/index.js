@@ -1,15 +1,6 @@
-import useUniqueID from "./useUniqueID";
-import useForceUpdate from "./useForceUpdate";
-import useThemeColors from "./useThemeColors";
-import useDocumentTitle from "./useDocumentTitle";
-import useFireAuthRedux from "./useFireAuthRedux";
-import useThemeBreakpoints from "./useThemeBreakpoints";
-
-export {
-  useUniqueID,
-  useThemeColors,
-  useForceUpdate,
-  useDocumentTitle,
-  useFireAuthRedux,
-  useThemeBreakpoints,
-};
+export { default as useUniqueID } from "./useUniqueID";
+export { default as useForceUpdate } from "./useForceUpdate";
+export { default as useThemeColors } from "./useThemeColors";
+export { default as useDocumentTitle } from "./useDocumentTitle";
+export { default as useFireAuthRedux } from "./useFireAuthRedux";
+export { default as useThemeBreakpoints } from "./useThemeBreakpoints";

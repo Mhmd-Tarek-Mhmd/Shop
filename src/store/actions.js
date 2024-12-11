@@ -1,40 +1,18 @@
-import { toggleTheme } from "./slices/theme";
-import { openAlert, closeAlert } from "./slices/alert";
-import { add, clear, update } from "./slices/authedUser";
-import { getProducts, updateProduct } from "./slices/products";
-import { openBackdrop, closeBackdrop } from "./slices/backdrop";
-import {
-  addCartItem,
-  removeCartItem,
+export {
   resetCart,
   setQuantity,
+  addCartItem,
+  removeCartItem,
   increaseQuantity,
   decreaseQuantity,
 } from "./slices/cart";
-import {
-  addWishlistItem,
-  removeWishlistItem,
-  resetWishlist,
-} from "./slices/wishlist";
-
 export {
-  add,
-  clear,
-  update,
-  openAlert,
-  closeAlert,
-  toggleTheme,
-  getProducts,
-  updateProduct,
-  openBackdrop,
-  closeBackdrop,
-  addCartItem,
-  removeCartItem,
-  resetCart,
-  setQuantity,
-  increaseQuantity,
-  decreaseQuantity,
+  resetWishlist,
   addWishlistItem,
   removeWishlistItem,
-  resetWishlist,
-};
+} from "./slices/wishlist";
+export { toggleTheme } from "./slices/theme";
+export { openAlert, closeAlert } from "./slices/alert";
+export { add, clear, update } from "./slices/authedUser";
+export { getProducts, updateProduct } from "./slices/products";
+export { openBackdrop, closeBackdrop } from "./slices/backdrop";
