@@ -53,7 +53,7 @@ function Counter({ id, isDisabled, increaseCb, decreaseCb, changeCb }) {
         aria-label="Decrease quantity"
         onClick={handleDecrease}
         sx={{ minWidth: "100%" }}
-        disabled={isDisabled}
+        disabled={isDisabled || val === 1}
       >
         -
       </Button>
@@ -65,7 +65,7 @@ function Counter({ id, isDisabled, increaseCb, decreaseCb, changeCb }) {
         inputProps={{
           inputMode: "numeric",
           pattern: "[1-9]*",
-          ariaLabel: "Enter number of peices",
+          ariaLabel: "Enter number of pieces",
         }}
         sx={{
           ".MuiOutlinedInput-root": { minHeight: "100%" },

@@ -2,8 +2,12 @@ import { useLayoutEffect, useRef } from "preact/hooks";
 import { useThemeColors } from "../../hooks";
 
 import Box from "@mui/material/Box";
+import Radio from "@mui/material/Radio";
 import Slider from "@mui/material/Slider";
 import { visuallyHidden } from "@mui/utils";
+import TextField from "@mui/material/TextField";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 function Filters({ productsData, setProducts, setIsFilter }) {
   const categories = [
@@ -12,7 +16,6 @@ function Filters({ productsData, setProducts, setIsFilter }) {
   const maxPrice = Math.max(...productsData.map((product) => product.price));
 
   const ref = useRef(null);
-  const grey = useThemeColors("grey", "hex", 200, 800);
 
   const handleFilter = () => {
     setIsFilter(true);
@@ -48,9 +51,7 @@ function Filters({ productsData, setProducts, setIsFilter }) {
         px: 2,
         py: 6.25,
         width: { md: 300 },
-        backgroundColor: grey,
-        boxShadow: "0 1px 0 rgb(0 0 0 / 8%)",
-        overflowX: "hidden",
+        mt: { md: "100px" },
       }}
     >
       <Box
@@ -62,7 +63,10 @@ function Filters({ productsData, setProducts, setIsFilter }) {
         sx={{ display: "grid", rowGap: 6.25 }}
       >
         <Search />
-        <Category categories={categories} />
+        <Category
+          categories={categories}
+          value={ref?.current?.category?.value}
+        />
         <Price maxPrice={maxPrice} handleFilter={handleFilter} />
       </Box>
     </Box>
@@ -74,22 +78,18 @@ export default Filters;
 const Search = () => (
   <label>
     <span style={visuallyHidden}>Search by product name</span>
-    <Box
-      component="input"
-      name="search"
-      type="search"
-      placeholder="Search..."
-      sx={{ font: "inherit", p: 1.5, width: "100%", border: "none" }}
-    />
+    <TextField fullWidth name="search" type="search" placeholder="Search..." />
   </label>
 );
 
-const Category = ({ categories }) => (
+const Category = ({ categories, value }) => (
   <Fieldset title="Categories">
-    <RadioInput name="category" label="All" value="" defaultChecked />
-    {categories.map((category) => (
-      <RadioInput name="category" label={category} value={category} />
-    ))}
+    <RadioGroup name="categories" value={value || ""}>
+      <RadioInput name="category" label="All" value="" defaultChecked />
+      {categories.map((category) => (
+        <RadioInput name="category" label={category} value={category} />
+      ))}
+    </RadioGroup>
   </Fieldset>
 );
 
@@ -135,11 +135,5 @@ const Fieldset = ({ title, children }) => (
 );
 
 const RadioInput = ({ label, ...props }) => (
-  <Box
-    component="label"
-    sx={{ display: "flex", alignItems: "center", columnGap: 0.5 }}
-  >
-    <input type="radio" {...props} />
-    <span>{label}</span>
-  </Box>
+  <FormControlLabel label={label} control={<Radio size="small" {...props} />} />
 );

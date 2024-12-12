@@ -9,7 +9,7 @@ import { WishList, Cart } from "../ShoppingLinks";
 
 function DesktopNav({ user }) {
   return (
-    <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
+    <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center" }}>
       <PagesLinksList />
 
       <ThemeToggler Element={IconButton} color="inherit" />

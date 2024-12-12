@@ -6,7 +6,7 @@ import PagesLinksMenu from "./pagesLinksMenu";
 
 function MobileNav({ user }) {
   return (
-    <Box sx={{ display: { md: "none" } }}>
+    <Box sx={{ display: { sm: "none" } }}>
       <MoreMenu />
       {user && <AccountMenu user={user} />}
       <PagesLinksMenu user={user} />
