@@ -9,7 +9,6 @@ import { getProducts } from "./store/actions";
 
 import Routes from "./routes";
 import Nav from "./layouts/nav";
-import Main from "./layouts/main";
 import Footer from "./layouts/footer";
 import Feedback from "./components/feedback";
 
@@ -26,11 +25,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ height: "100vh" }}>
+      <Box sx={{ height: "100vh", display: "flex", flexDirection: "column" }}>
         <Nav />
-        <Main>
+        <Box component="main" sx={{ flex: 1 }}>
           <Routes />
-        </Main>
+        </Box>
         <Footer />
       </Box>
       <Feedback />
