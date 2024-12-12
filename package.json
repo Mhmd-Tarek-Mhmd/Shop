@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "preact build --no-prerender",
+    "deploy": "preact build --no-prerender && firebase deploy",
     "serve": "sirv build --port 8080 --cors --single",
     "dev": "preact watch",
     "lint": "eslint src",
